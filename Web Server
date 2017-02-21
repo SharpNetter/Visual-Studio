@@ -1,0 +1,18 @@
+            //Consider putting the code in the try-catch for exception handling.
+            // When getting started with ADO.net there is a set of code common for both  connected and disconnected model which are given below.
+
+
+            string constring = "Data Source=--name of the server-- Initial Catalog=--name of the database-- User ID=--ID-- Password=--password of the server--";
+            SqlConnection con = new SqlConnection(constring);
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.CommandText = "--name of the procedures you want to call--";
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            //when using disconnected model we make use of data set.
+
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            return ds;
